@@ -1,0 +1,5 @@
+option solver cplex;
+model keyboard.mod;
+data keyboard.dat;
+solve;
+display x;
