@@ -1,7 +1,7 @@
 import random
 
 numberOfKeys = 26
-numberOfKeys = 26
+numberOfKeys = 5
 inputText = 'Learn from yesterday, live for today, hope for tomorrow.'
 
 def generatePositionSet():
@@ -93,3 +93,28 @@ generatePositionCost()
 
 generateRandomKeyMove()
 #generateKeyMoveFrom()
+
+import subprocess
+import time
+
+for i in range(26):
+    numberOfKeys = i + 1
+    
+    generatePositionSet()
+    generateKeySet()
+
+    #generateRandomPositionCost()
+    generatePositionCost()
+
+    generateRandomKeyMove()
+    #generateKeyMoveFrom()
+    
+    start = time.time()
+
+    result = subprocess.run(["ampl_mswin64/ampl.exe","script.run"], capture_output=True, text=True)
+    with open('logs/log_' + str(i), 'w') as f:
+        f.write(result.stdout)
+
+    t = time.time() - start
+    print(t)
+    
