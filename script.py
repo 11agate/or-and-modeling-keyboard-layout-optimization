@@ -1,7 +1,7 @@
 import random
 
 numberOfKeys = 26
-numberOfKeys = 10
+numberOfKeys = 26
 inputText = 'Learn from yesterday, live for today, hope for tomorrow.'
 
 def generatePositionSet():
@@ -44,7 +44,6 @@ def getBlockNumber(position: str) -> int:
 def generatePositionCost():
     result = str()
     for i in range(numberOfKeys):
-        print(getBlockNumber(chr(65+i)))
         for j in range(numberOfKeys):
             bi = getBlockNumber(chr(65+i))
             bj = getBlockNumber(chr(65+j))
