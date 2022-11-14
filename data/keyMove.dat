@@ -1,0 +1,17 @@
+param KeyMove :=
+  a a 48
+  a b 78
+  a c 30
+  a d 96
+  b a 75
+  b b 95
+  b c 36
+  b d 91
+  c a 29
+  c b 102
+  c c 21
+  c d 47
+  d a 54
+  d b 46
+  d c 109
+  d d 11;

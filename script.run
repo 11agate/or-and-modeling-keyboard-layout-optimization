@@ -1,6 +1,9 @@
 option solver 'ampl_mswin64/cplex';
 option cplex_options 'mipdisplay=2';
 model keyboard.mod;
-data keyboard.dat;
+data 'data/keySet.dat';
+data 'data/positionSet.dat';
+data 'data/keyMove.dat';
+data 'data/positionCost.dat';
 solve;
 display x;
