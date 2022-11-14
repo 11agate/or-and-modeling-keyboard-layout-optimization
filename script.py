@@ -1,7 +1,7 @@
 import random
 
 numberOfKeys = 26
-numberOfKeys = 4
+numberOfKeys = 10
 inputText = 'Learn from yesterday, live for today, hope for tomorrow.'
 
 def generatePositionSet():
@@ -23,6 +23,41 @@ def generateRandomPositionCost():
     for i in range(numberOfKeys):
         for j in range(numberOfKeys):
             result += "  "+chr(65+i) +" "+chr(65+j) +" "+ str(10 + random.randrange(100)) + '\n'
+    with open('data/positionCost.dat', 'w') as f:
+        f.write('param PositionCost :=\n' + result[:-1] + ';')
+
+blockList = [
+    ['Q','A','Z','W','S','X'],
+    ['E','D','C'],
+    ['R','F','V','T','G','B'],
+    ['Y','H','N','U','J','M'],
+    ['I','K'],
+    ['O','L','P'],
+]
+
+def getBlockNumber(position: str) -> int:
+    for i in range(len(blockList)):
+        for j in range(len(blockList[i])):
+            if position == blockList[i][j]:
+                return i
+
+def generatePositionCost():
+    result = str()
+    for i in range(numberOfKeys):
+        print(getBlockNumber(chr(65+i)))
+        for j in range(numberOfKeys):
+            bi = getBlockNumber(chr(65+i))
+            bj = getBlockNumber(chr(65+j))
+            score = 3
+            if bi == bj:
+                score = 4
+            elif bi <= 2 and bj >= 3:
+                score = 1
+            elif bj <= 2 and bi >= 3:
+                score = 1
+            elif abs(bi - bj) == 1:
+                score = 2
+            result += "  "+chr(65+i) +" "+chr(65+j) +" "+ str(score * 10)+ '\n'
     with open('data/positionCost.dat', 'w') as f:
         f.write('param PositionCost :=\n' + result[:-1] + ';')
 
@@ -53,6 +88,9 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
 
 generatePositionSet()
 generateKeySet()
-generateRandomPositionCost()
+
+#generateRandomPositionCost()
+generatePositionCost()
+
 generateRandomKeyMove()
 #generateKeyMoveFrom()

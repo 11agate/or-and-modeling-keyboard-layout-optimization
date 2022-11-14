@@ -1,1 +1,5 @@
 ampl_mswin64
+data/keySet.dat
+data/keyMove.dat
+data/positionCost.dat
+data/positionSet.dat
