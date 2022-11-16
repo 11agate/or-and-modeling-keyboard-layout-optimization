@@ -20,7 +20,7 @@ minimize COST:
          x[ki, bi] * x[kj, bj] * BlockCost[bi, bj] * KeyMove[ki, kj];
 
 minimize COSTY:
-   sum {(ki, kj) in UsingKeys, pi in Position, pj in Position}
+   sum {(ki, kj) in UsingKeys, bi in Block, bj in Block, pi in PositionsInBlock[bi], pj in PositionsInBlock[bj]}
       y[ki, pi] * y[kj, pj] * PositionCost[pi, pj] * KeyMove[ki, kj];
 
 subject to ValidationBlock{bi in Block}:
@@ -31,3 +31,6 @@ subject to ValidationKey{ki in Key}:
 
 subject to ValidationPosition{block in Block, key in Key}:
    sum {p in PositionsInBlock[block]} y[key, p] = x[key, block];
+
+subject to ValidationPosition2{p in Position}:
+   sum {k in Key} y[k, p] = 1;

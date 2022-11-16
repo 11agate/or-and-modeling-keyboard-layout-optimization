@@ -1,7 +1,6 @@
 import random
 
 numberOfKeys = 26
-numberOfKeys = 5
 inputText = 'Learn from yesterday, live for today, hope for tomorrow.'
 
 def generatePositionSet():
@@ -105,14 +104,14 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
     li = []
     for i in range(26):
         for j in range(26):
-            if matrix[i][j] >= 1:
+            if matrix[i][j] >= 9:
                 li.append([matrix[i][j], i, j])
 #                result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
 #                state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
   
     li = sorted(li, key=lambda x: -x[0])
     
-    for l in range(len(li)):
+    for l in range(min(60, len(li))):
         i = li[l][1]
         j = li[l][2]
         result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
@@ -123,22 +122,7 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
     with open('data/keyState.dat', 'w') as f:
         f.write('set UsingKeys :=\n' + state[:-1] + ';')
 
-generatePositionSet()
-generateKeySet()
-
-#generateRandomPositionCost()
-generatePositionCost()
-
-generateRandomKeyMove()
-#generateKeyMoveFrom()
-
-import subprocess
-import time
-
-for i in range(26):
-    i = 25
-    numberOfKeys = i + 1
-    
+def runAMPL():
     generatePositionSet()
     generateKeySet()
 
@@ -150,14 +134,28 @@ for i in range(26):
     
     generateBlockCost()
 
-    break
-    
+    import subprocess
+    import time
+
     start = time.time()
 
     result = subprocess.run(["ampl_mswin64/ampl.exe","script.run"], capture_output=True, text=True)
-    with open('logs/log_' + str(i), 'w') as f:
+    with open('logs/log', 'w') as f:
         f.write(result.stdout)
 
     t = time.time() - start
     print(t)
-    break
+
+
+generatePositionSet()
+generateKeySet()
+
+#generateRandomPositionCost()
+generatePositionCost()
+
+#generateRandomKeyMove()
+generateKeyMoveFrom()
+
+generateBlockCost()
+
+runAMPL()

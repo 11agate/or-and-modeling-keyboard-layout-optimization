@@ -11,5 +11,6 @@ data 'data/block.dat';
 data 'data/blockCost.dat';
 display KeyMove;
 solve;
+option display_width 150;
 display x;
 display y;
