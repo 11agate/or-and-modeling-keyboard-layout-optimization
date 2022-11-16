@@ -102,11 +102,22 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
             continue
         matrix[ord(text[t])-97][ord(text[t+1])- 97]+=1
     
+    li = []
     for i in range(26):
         for j in range(26):
-            if matrix[i][j] >= 40:
-                result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
-                state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
+            if matrix[i][j] >= 1:
+                li.append([matrix[i][j], i, j])
+#                result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
+#                state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
+  
+    li = sorted(li, key=lambda x: -x[0])
+    
+    for l in range(len(li)):
+        i = li[l][1]
+        j = li[l][2]
+        result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
+        state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
+        
     with open('data/keyMove.dat', 'w') as f:
         f.write('param KeyMove :=\n' + result[:-1] + ';')
     with open('data/keyState.dat', 'w') as f:
