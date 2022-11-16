@@ -1,89 +1,14 @@
 set UsingKeys :=
-  a c
-  a g
-  a i
-  a l
   a n
-  a r
-  a s
   a t
-  a y
-  b e
-  c a
-  c e
-  c h
-  c l
-  c o
-  c t
-  d a
   d e
-  d i
-  e a
-  e c
-  e d
-  e e
-  e l
-  e m
   e n
-  e p
   e r
   e s
-  f i
-  f o
-  h a
   h e
-  h i
-  h o
-  i c
-  i d
-  i l
   i n
-  i o
-  i r
-  i s
-  i t
-  l a
-  l e
-  l i
-  l l
-  l y
-  m a
-  m e
-  m i
-  m p
-  n a
-  n c
-  n d
-  n e
-  n g
-  n o
-  n s
-  n t
-  o f
-  o m
   o n
   o r
-  o u
-  p e
-  p o
-  p r
-  r a
   r e
-  r i
-  r o
-  r s
-  r t
-  r u
-  s e
-  s i
-  s t
-  t a
   t e
-  t h
-  t i
-  t o
-  u m
-  u n
-  u s
-  v e
-  w e;
+  t h;

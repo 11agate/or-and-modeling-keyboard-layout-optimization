@@ -104,7 +104,7 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
     
     for i in range(26):
         for j in range(26):
-            if matrix[i][j] >= 10:
+            if matrix[i][j] >= 40:
                 result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
                 state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
     with open('data/keyMove.dat', 'w') as f:

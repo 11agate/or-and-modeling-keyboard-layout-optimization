@@ -12,3 +12,4 @@ data 'data/blockCost.dat';
 display KeyMove;
 solve;
 display x;
+display y;

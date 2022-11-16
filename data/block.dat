@@ -9,3 +9,12 @@ param BlockKeyNum :=
  R2 2
  R3 2
  R4 1;
+
+set PositionsInBlock[L1] := Q A Z;
+set PositionsInBlock[L2] := W S X;
+set PositionsInBlock[L3] := E D C;
+set PositionsInBlock[L4] := R F V T G B;
+set PositionsInBlock[R1] := Y H N U J M;
+set PositionsInBlock[R2] := I K;
+set PositionsInBlock[R3] := O L;
+set PositionsInBlock[R4] := P;
