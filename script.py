@@ -27,12 +27,14 @@ def generateRandomPositionCost():
         f.write('param PositionCost :=\n' + result[:-1] + ';')
 
 blockList = [
-    ['Q','A','Z','W','S','X'],
+    ['Q','A','Z']
+    ['W','S','X'],
     ['E','D','C'],
     ['R','F','V','T','G','B'],
     ['Y','H','N','U','J','M'],
     ['I','K'],
-    ['O','L','P'],
+    ['O','L']
+    ['P'],
 ]
 
 def getBlockNumber(position: str) -> int:
@@ -47,15 +49,29 @@ def generatePositionCost():
         for j in range(numberOfKeys):
             bi = getBlockNumber(chr(65+i))
             bj = getBlockNumber(chr(65+j))
-            score = 3
+            score = 0
             if bi == bj:
+                score = 0
+            elif bi - bj == -5:
+                score = 6
+            elif bi - bj == -4:
                 score = 4
-            elif bi <= 2 and bj >= 3:
+            elif bi - bj == -3:
                 score = 1
-            elif bj <= 2 and bi >= 3:
-                score = 1
-            elif abs(bi - bj) == 1:
+            elif bi - bj == -2:
+                score = 5
+            elif bi - bj == -1:
+                score = 3
+            elif bi - bj == 1:
                 score = 2
+            elif bi - bj == 2:
+                score = 4
+            elif bi - bj == 3:
+                score = 1
+            elif bi - bj == 4:
+                score = 3
+            elif bi - bj == 5:
+                score = 5
             result += "  "+chr(65+i) +" "+chr(65+j) +" "+ str(score * 10)+ '\n'
     with open('data/positionCost.dat', 'w') as f:
         f.write('param PositionCost :=\n' + result[:-1] + ';')
@@ -65,15 +81,15 @@ def generateBlockCost():
     txt = ['L1', 'L2', 'L3', 'L4', 'R1', 'R2', 'R3', 'R4']
     for bi in range(8):
         for bj in range(8):
-            score = 3
+            score = 1
             if bi == bj:
-                score = 4
-            elif bi <= 2 and bj >= 3:
-                score = 1
-            elif bj <= 2 and bi >= 3:
-                score = 1
+                score = 5
             elif abs(bi - bj) == 1:
                 score = 2
+            elif abs(bi - bj) == 2:
+                score = 3
+            elif abs(bi - bj) == 3:
+                score = 4
             result += "  "+ txt[bi]+" "+ txt[bj] +" "+ str(score * 10)+ '\n'
     with open('data/blockCost.dat', 'w') as f:
         f.write('param BlockCost :=\n' + result[:-1] + ';')
