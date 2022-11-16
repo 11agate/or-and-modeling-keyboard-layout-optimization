@@ -69,7 +69,11 @@ def generateRandomKeyMove():
         f.write('param KeyMove :=\n' + result[:-1] + ';')
 
 def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for tomorrow.'):
-    text = 'Learn from yesterday'
+    text = 'In many applications, we are concerned only with a subset of all ordered pairs from two sets. For example, in the transportation model, shipments may not be possible from every origin to every destination. The shipping costs per unit may be provided only for the usable origin-destination pairs, so that it is desirable to index the costs and the variables only over these pairs. In AMPL terms, we want the set LINKS defined above to contain just a subset of pairs that are given in the data, rather than all pairs from ORIG'
+    
+    with open('input') as f:
+        
+        text = f.read()
     result = str()
     state = str()
     matrix = [[0] * 26 for i in range(26)]
@@ -82,7 +86,7 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
     
     for i in range(26):
         for j in range(26):
-            if matrix[i][j] >= 1:
+            if matrix[i][j] >= 10:
                 result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
                 state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
     with open('data/keyMove.dat', 'w') as f:
@@ -114,6 +118,8 @@ for i in range(26):
 
     #generateRandomKeyMove()
     generateKeyMoveFrom()
+
+    break
     
     start = time.time()
 
