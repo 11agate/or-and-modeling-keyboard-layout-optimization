@@ -1,0 +1,11 @@
+set Block := L1 L2 L3 L4 R1 R2 R3 R4;
+
+param BlockKeyNum :=
+ L1 3
+ L2 3
+ L3 3
+ L4 6
+ R1 6
+ R2 2
+ R3 2
+ R4 1;

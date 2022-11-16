@@ -60,6 +60,24 @@ def generatePositionCost():
     with open('data/positionCost.dat', 'w') as f:
         f.write('param PositionCost :=\n' + result[:-1] + ';')
 
+def generateBlockCost():
+    result = str()
+    txt = ['L1', 'L2', 'L3', 'L4', 'R1', 'R2', 'R3', 'R4']
+    for bi in range(8):
+        for bj in range(8):
+            score = 3
+            if bi == bj:
+                score = 4
+            elif bi <= 2 and bj >= 3:
+                score = 1
+            elif bj <= 2 and bi >= 3:
+                score = 1
+            elif abs(bi - bj) == 1:
+                score = 2
+            result += "  "+ txt[bi]+" "+ txt[bj] +" "+ str(score * 10)+ '\n'
+    with open('data/blockCost.dat', 'w') as f:
+        f.write('param BlockCost :=\n' + result[:-1] + ';')
+
 def generateRandomKeyMove():
     result = str()
     for i in range(numberOfKeys):
@@ -118,6 +136,8 @@ for i in range(26):
 
     #generateRandomKeyMove()
     generateKeyMoveFrom()
+    
+    generateBlockCost()
 
     break
     

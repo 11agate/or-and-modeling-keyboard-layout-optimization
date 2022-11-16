@@ -7,6 +7,8 @@ data 'data/positionSet.dat';
 data 'data/keyMove.dat';
 data 'data/positionCost.dat';
 data 'data/keyState.dat';
+data 'data/block.dat';
+data 'data/blockCost.dat';
 display KeyMove;
 solve;
 display x;
