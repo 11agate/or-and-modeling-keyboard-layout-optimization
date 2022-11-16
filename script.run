@@ -1,3 +1,4 @@
+reset;
 option solver 'ampl_mswin64/cplex';
 option cplex_options 'mipdisplay=2';
 model keyboard.mod;
@@ -5,5 +6,7 @@ data 'data/keySet.dat';
 data 'data/positionSet.dat';
 data 'data/keyMove.dat';
 data 'data/positionCost.dat';
+data 'data/keyState.dat';
+display KeyMove;
 solve;
 display x;

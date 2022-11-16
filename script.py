@@ -69,7 +69,9 @@ def generateRandomKeyMove():
         f.write('param KeyMove :=\n' + result[:-1] + ';')
 
 def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for tomorrow.'):
+    text = 'Learn from yesterday'
     result = str()
+    state = str()
     matrix = [[0] * 26 for i in range(26)]
     for t in range(len(text) - 1):
         if ord(text[t]) < 97 or ord(text[t]) > 97+numberOfKeys-1:
@@ -82,8 +84,11 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
         for j in range(26):
             if matrix[i][j] >= 1:
                 result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
+                state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
     with open('data/keyMove.dat', 'w') as f:
         f.write('param KeyMove :=\n' + result[:-1] + ';')
+    with open('data/keyState.dat', 'w') as f:
+        f.write('set UsingKeys :=\n' + state[:-1] + ';')
 
 generatePositionSet()
 generateKeySet()
@@ -98,6 +103,7 @@ import subprocess
 import time
 
 for i in range(26):
+    i = 25
     numberOfKeys = i + 1
     
     generatePositionSet()
@@ -106,8 +112,8 @@ for i in range(26):
     #generateRandomPositionCost()
     generatePositionCost()
 
-    generateRandomKeyMove()
-    #generateKeyMoveFrom()
+    #generateRandomKeyMove()
+    generateKeyMoveFrom()
     
     start = time.time()
 
@@ -117,4 +123,4 @@ for i in range(26):
 
     t = time.time() - start
     print(t)
-    
+    break
