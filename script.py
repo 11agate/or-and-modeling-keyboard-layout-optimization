@@ -1,7 +1,6 @@
 import random
 
 numberOfKeys = 26
-numberOfKeys = 5
 inputText = 'Learn from yesterday, live for today, hope for tomorrow.'
 
 def generatePositionSet():
@@ -27,13 +26,13 @@ def generateRandomPositionCost():
         f.write('param PositionCost :=\n' + result[:-1] + ';')
 
 blockList = [
-    ['Q','A','Z']
+    ['Q','A','Z'],
     ['W','S','X'],
     ['E','D','C'],
     ['R','F','V','T','G','B'],
     ['Y','H','N','U','J','M'],
     ['I','K'],
-    ['O','L']
+    ['O','L'],
     ['P'],
 ]
 
@@ -41,7 +40,7 @@ def getBlockNumber(position: str) -> int:
     for i in range(len(blockList)):
         for j in range(len(blockList[i])):
             if position == blockList[i][j]:
-                return i
+                return j
 
 def generatePositionCost():
     result = str()
