@@ -7,12 +7,12 @@ param PositionCost{Position, Position};
 var x {Position, Key} binary;
 
 minimize COST:
-   sum {i in Key, j in Key, pi in Position, pj in Position}
-      x[pi, i] * x[pj, j] * PositionCost[pi, pj] * KeyMove[i, j];
+   sum {ki in Key, kj in Key, pi in Position, pj in Position}
+      x[pi, ki] * x[pj, kj] * PositionCost[pi, pj] * KeyMove[ki, kj];
 
-subject to ValidationPosition{i in Position}:
-   sum {j in Key} x[i, j] = 1;
+subject to ValidationPosition{pi in Position}:
+   sum {kj in Key} x[pi, kj] = 1;
 
-subject to ValidationKey{i in Key}:
-   sum {j in Position} x[j, i] = 1;
+subject to ValidationKey{ki in Key}:
+   sum {pj in Position} x[pj, ki] = 1;
  
