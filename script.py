@@ -104,7 +104,7 @@ def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for t
     li = []
     for i in range(26):
         for j in range(26):
-            if matrix[i][j] >= 9:
+            if matrix[i][j] >= 1:
                 li.append([matrix[i][j], i, j])
 #                result += "  "+ chr(i + 97) + " "+chr(j + 97)+" "+str(matrix[i][j])+'\n'
 #                state += "  "+ chr(i + 97) + " "+chr(j + 97) + '\n'
