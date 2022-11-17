@@ -90,6 +90,7 @@ def generateBlockCost():
                 score = 3
             elif abs(bi - bj) == 3:
                 score = 4
+            score *= 2
             score += blockcost[bi] + blockcost[bj]
             result += "  "+ txt[bi]+" "+ txt[bj] +" "+ str(score * 10)+ '\n'
     with open('data/blockCost.dat', 'w') as f:
