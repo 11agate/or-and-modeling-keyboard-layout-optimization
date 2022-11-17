@@ -78,6 +78,7 @@ def generatePositionCost():
 def generateBlockCost():
     result = str()
     txt = ['L1', 'L2', 'L3', 'L4', 'R1', 'R2', 'R3', 'R4']
+    blockcost = [6, 4, 2, 1, 1, 2, 4, 6]
     for bi in range(8):
         for bj in range(8):
             score = 1
@@ -89,6 +90,7 @@ def generateBlockCost():
                 score = 3
             elif abs(bi - bj) == 3:
                 score = 4
+            score += blockcost[bi] + blockcost[bj]
             result += "  "+ txt[bi]+" "+ txt[bj] +" "+ str(score * 10)+ '\n'
     with open('data/blockCost.dat', 'w') as f:
         f.write('param BlockCost :=\n' + result[:-1] + ';')
