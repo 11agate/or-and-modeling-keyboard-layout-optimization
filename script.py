@@ -49,8 +49,10 @@ def generatePositionCost():
             bi = getBlockNumber(chr(65+i))
             bj = getBlockNumber(chr(65+j))
             score = 0
-            if bi == bj:
-                score = 0
+            if bj == 2 or bj == 5:
+                score = 10
+            elif bi - bj == 0:
+                score = 1
             elif bi - bj == -5:
                 score = 6
             elif bi - bj == -4:
@@ -107,7 +109,7 @@ def generateRandomKeyMove():
 def generateKeyMoveFrom(text = 'Learn from yesterday, live for today, hope for tomorrow.'):
     text = 'In many applications, we are concerned only with a subset of all ordered pairs from two sets. For example, in the transportation model, shipments may not be possible from every origin to every destination. The shipping costs per unit may be provided only for the usable origin-destination pairs, so that it is desirable to index the costs and the variables only over these pairs. In AMPL terms, we want the set LINKS defined above to contain just a subset of pairs that are given in the data, rather than all pairs from ORIG'
     
-    with open('input') as f:
+    with open('input', encoding="utf-8") as f:
         
         text = f.read()
     result = str()

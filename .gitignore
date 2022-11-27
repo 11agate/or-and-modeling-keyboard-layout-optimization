@@ -1,7 +1,11 @@
 ampl_mswin64
 data/keySet.dat
 data/keyMove.dat
+data/keyState.dat
 data/positionCost.dat
 data/positionSet.dat
+data/block.dat
+data/blockCost.dat
+
 logs
 image.png
